@@ -1,129 +1,122 @@
 # BEFAV – Motor Mount Assembly
 
+**For full details, refer to the PDF report included in this repository.**
+
 This repository contains the CAD models and technical drawing for a motor mount assembly designed for **BEFAV (Bio-Inspired Environmentally Friendly Aerial Vehicle)** – a conceptual VTOL/eVTOL-style aerial vehicle. The mount is intended to securely support an electric propulsion unit while minimizing weight and maintaining sufficient stiffness and strength.
 
-The repository showcases the full design progression from an initial solid/truss concept to a **topology-optimized** motor mount suitable for integration into a lightweight aerial platform.
+The repository showcases the design progression from an initial solid/truss concept to a **topology-optimized** motor mount suitable for lightweight aerial vehicle applications.
 
 ---
 
 ## Project Overview
 
-The motor mount is a structural interface between the airframe and an electric motor/propeller (or ducted fan). It is designed to:
+The motor mount serves as the structural interface between the propulsion system and the aircraft frame. It is designed to:
 
-- Carry **thrust, torque, and bending loads** from the propulsion unit.
-- Interface with an airframe rib, pylon, or nacelle structure via a defined bolt pattern.
-- Minimize structural mass while maintaining stiffness and limiting stress.
-- Be manufacturable using common processes such as CNC machining or additive manufacturing.
+- Carry **thrust, torque, and bending loads** from the electric motor/propeller.
+- Interface with an airframe rib, pylon, or nacelle structure.
+- Minimize structural mass while maintaining stiffness and strength.
+- Support manufacturability through machining or additive manufacturing.
 
-This component is part of a broader BEFAV concept that explores efficient, electrically powered aerial vehicles with bio-inspired and environmentally conscious design principles.
+This component contributes to the broader BEFAV concept, which focuses on efficient, electrically powered, environmentally conscious aerial vehicle design.
 
 ---
 
 ## Repository Contents
 
-The repository currently includes the following files:
-
 | File name                                      | Type | Description |
 | ---------------------------------------------- | ---- | ----------- |
-| `Complete motor mount assembly.step`           | STEP | CAD-neutral model of the complete motor mount assembly for integration into other CAD projects or simulation environments. |
-| `Complete motor mount assembly.stl`            | STL  | Triangulated version of the complete mount, suitable for 3D printing / rapid prototyping or visualization. |
-| `Motor mount assembly (Truss).step`           | STEP | Intermediate **truss-style** motor mount concept emphasizing efficient load paths and reduced material usage. |
-| `Motor mount assembly (Truss).stl`            | STL  | Export of the truss-style motor mount for printing or mesh-based analysis. |
-| `Topology optimized motor mount.step`          | STEP | Final **topology-optimized** motor mount geometry, refined for weight reduction while preserving stiffness and strength. |
-| `Topology optimized motor mount.stl`           | STL  | Mesh version of the topology-optimized design for additive manufacturing or rendering workflows. |
-| `FDRW25B_SSR_Rev_B .pdf`                       | PDF  | Technical drawing of the motor mount, including dimensions, tolerances, and key fabrication / inspection details. |
-
-All 3D models are provided in **STEP** (CAD-neutral) and **STL** (mesh) formats so they can be used across most modern CAD and CAE tools.
+| `Complete motor mount assembly.step`           | STEP | Full motor mount assembly for CAD integration and simulations. |
+| `Complete motor mount assembly.stl`            | STL  | Mesh version for visualization or 3D printing. |
+| `Motor mount assembly (Truss).step`            | STEP | Truss-style intermediate concept emphasizing efficient load paths. |
+| `Motor mount assembly (Truss).stl`             | STL  | Mesh export of the truss-style design. |
+| `Topology optimized motor mount.step`          | STEP | Final topology-optimized mount, refined for weight reduction and stiffness. |
+| `Topology optimized motor mount.stl`           | STL  | Mesh version of the optimized geometry. |
+| `FDRW25B_SSR_Rev_B .pdf`                       | PDF  | Technical drawing including dimensions, tolerances, and machining details. |
 
 ---
 
 ## Design Goals & Constraints
 
-The motor mount was designed with the following typical constraints in mind:
+The motor mount was developed under the following considerations:
 
-- **Loads**
-  - Axial thrust from the electric motor and propeller.
-  - Motor torque reaction transmitted through the mounting pattern.
-  - Bending loads due to offset mass and aerodynamic forces.
-- **Performance Targets**
-  - Minimize mass while maintaining adequate stiffness to limit deflection.
-  - Keep maximum stress within a safe factor of the material yield strength.
-- **Interfaces**
-  - Bolt pattern and mounting surfaces compatible with a small electric motor and airframe structure.
-  - Clearances for motor body, wiring, and fasteners.
-- **Manufacturability**
-  - Geometry suitable for machining, or optionally for metal / high-strength polymer additive manufacturing.
-  - Inclusion of fillets and transitions to reduce stress concentrations where appropriate.
+### **Loads**
+- Axial thrust generated by the motor/propeller.
+- Torque from the motor’s rotational output.
+- Bending stresses due to aerodynamic and inertial loads.
 
-> **Note:** Exact material choice and detailed load cases can be tuned by the user depending on the specific motor, airframe, and mission profile.
+### **Performance Targets**
+- Reduce mass while maintaining stiffness.
+- Keep stress below allowable material limits.
+- Ensure tight control of deflection at the motor interface.
+
+### **Interface Requirements**
+- Bolt pattern compatible with common electric motors.
+- Wall thicknesses and rib structures tuned for strength.
+- Clearances for wiring and motor geometry.
+
+### **Manufacturability**
+- Geometry feasible for CNC machining.
+- Alternative option for metal or reinforced polymer additive manufacturing.
+- Fillets and smooth transitions to reduce stress concentrations.
 
 ---
 
 ## Design & Optimization Workflow
 
-The design of the motor mount followed a typical **concept → refinement → optimization** workflow:
+### **1. Baseline Geometry**
+A solid baseline model was developed to establish load paths, mounting surfaces, and overall packaging.
 
-1. **Baseline Concept**
-   - Begin with a conservative solid / plate-based geometry that satisfies all load paths.
-   - Ensure clean mounting interfaces and sufficient stiffness.
+### **2. Truss-Style Refinement**
+The baseline was converted into a truss-inspired configuration to:
+- Concentrate material along high-stress paths.
+- Reduce non-critical material.
+- Improve stiffness-to-weight ratio.
 
-2. **Truss-Style Refinement**
-   - Convert the baseline into a truss-inspired mount where material is primarily located along critical load paths.
-   - Reduce non-load-bearing material while maintaining robust connection regions around bolt holes and mounting surfaces.
+### **3. Topology Optimization**
+The design was further optimized by:
+- Removing material in low-stress regions.
+- Preserving key interfaces and boundary constraints.
+- Producing a light, efficient structure ready for FEA validation.
 
-3. **Topology-Optimized Design**
-   - Further refine the geometry using a topology-style approach:
-     - Identify low-stress regions and remove unnecessary material.
-     - Preserve boundary conditions and interface regions.
-   - Result: a lighter, more efficient structural component that maintains stiffness and strength targets.
-
-4. **Validation (Intended)**
-   - Import the optimized geometry into FEA software.
-   - Apply representative thrust, torque, and boundary conditions to verify:
-     - Maximum von Mises stress levels.
-     - Deflections at the motor face.
-     - Overall safety factor relative to chosen material.
+### **4. Intended Validation**
+The optimized geometry can be assessed using FEA to check:
+- Von Mises stress distribution.
+- Deflection at the motor face.
+- Safety factors based on chosen materials.
 
 ---
 
-## How to Use These Models
+## Using the Models
 
-### Viewing and Editing the CAD
-
-You can open the **STEP** files in most CAD tools, for example:
-
+### **Viewing & Editing**
+Open the **STEP** files in:
 - SolidWorks  
-- Autodesk Inventor / Fusion 360  
+- Autodesk Fusion 360 / Inventor  
 - CATIA  
 - Siemens NX  
-- FreeCAD (open-source)
+- FreeCAD  
 
-The **STL** files are ideal for:
+Open the **STL** files for:
+- 3D printing  
+- Mesh visualization  
+- Mesh-based FEA  
 
-- 3D printing prototypes.
-- Importing into mesh-based simulation tools.
-- Visualization in tools like Blender or MeshLab.
-
-### Integrating into Your Own Design
-
-1. **Import the chosen STEP file** into your CAD assembly.
-2. **Align the mount** with your airframe rib or pylon using the bolt pattern defined in the drawing.
-3. **Adapt mounting interfaces** (hole sizes, spacing, fillet radii, etc.) to match:
-   - Your motor’s mounting pattern.
-   - Your airframe’s structural members and fastener hardware.
-4. Optionally, **re-run FEA** on the adapted geometry for your own load cases and materials.
+### **Integration into a Project**
+1. Import the STEP file into your CAD environment.  
+2. Align it using the bolt pattern or mounting face.  
+3. Adapt hole sizes, clearances, or wall thicknesses as needed.  
+4. Perform FEA using your own load cases and material selections.  
 
 ---
 
-## Possible Applications
+## Applications
 
-While this mount was developed as part of the BEFAV VTOL/eVTOL concept, the geometry can be adapted for:
+This mount can be adapted for:
 
-- RC aircraft and UAV motor mounts.
-- Multirotor or tilt-rotor prototypes.
-- Test rigs for propulsion units.
-- Educational projects involving structural optimization and lightweight design.
+- UAV or RC aircraft propulsion systems  
+- Tilt-rotor or VTOL prototypes  
+- Test rigs for electric motor systems  
+- Educational demonstrations of structural optimization  
 
 ---
-
 
